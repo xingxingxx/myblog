@@ -3,29 +3,28 @@
  *
  * From表单验证
  */
-
 (function($){
     $.fn.validForm=function(){
         return this.each(function(){
-          var  $this=$(this);
+            var  $this=$(this);
             $("input,select,textarea",$this).data('valid',true);
             //select下拉框验证
             $("select[dataType*='*']",$this).each(function(){
                 $(this).on("blur", function() {
-               if($("option:selected",$(this)).val()!='0') {
-                   $(this).attr('title','');
-                   $(this).css('border-color','#888888');
-                   $(this).data('valid',true);
-               }else{
-                   $(this).attr('title','');
-                   $(this).css('border-color','red');
-                   $(this).data('valid',false);
-               }
-                 });
+                    if($("option:selected",$(this)).val()!='0') {
+                        $(this).attr('title','');
+                        $(this).css('border-color','#888888');
+                        $(this).data('valid',true);
+                    }else{
+                        $(this).attr('title','');
+                        $(this).css('border-color','red');
+                        $(this).data('valid',false);
+                    }
+                });
             });
             //不为空
             $("input[type=text][dataType*='*']",$this).each(function(){
-               $(this).on("blur", function() {
+                $(this).on("blur", function() {
                     var value = $(this).val();
                     value=value.replace(/(^\s+)|(\s+$)/g,"");
                     $(this).css('boxShadow','none');
@@ -39,8 +38,8 @@
                 });
             });
             //不限长度数字
-        $("input[type=text][dataType*='num']",$this).each(function(){
-            $(this).on("blur", function() {
+            $("input[type=text][dataType*='num']",$this).each(function(){
+                $(this).on("blur", function() {
                     var value = $(this).val();
                     value=value.replace(/(^\s+)|(\s+$)/g,"");
                     $(this).css('boxShadow','none');
@@ -65,8 +64,8 @@
                 });
             });
             //用户名(字母开头，允许5-16字节，允许字母数字下划线)
-           $("input[type=text][dataType*='user']",$this).each(function(){
-               $(this).on("blur", function() {
+            $("input[type=text][dataType*='user']",$this).each(function(){
+                $(this).on("blur", function() {
                     var value = $(this).val();
                     value=value.replace(/(^\s+)|(\s+$)/g,"");
                     $(this).css('boxShadow','none');
