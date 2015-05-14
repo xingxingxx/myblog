@@ -1,26 +1,3 @@
-body{
-    padding-top: 60px;
-}
-.navbar{
-    margin:0;
-    border:0;
-    background-color:#336699;
-    box-shadow: 5px 5px 5px #888888;
-    }
-.nav>li>a{
-    line-height:30px;
-}
-.navbar-brand{
-    height:auto;
-    line-height:30px;
-}
-@media (max-width: 768px) {
-
-    .nav>li>a{
-        line-height:20px;
-    }
-}
-.jumbotron{/*background-color:#CC9999;*/margin:0;height:360px;color:#ffffff;}
 
 .media-img{
     max-width:160px;
