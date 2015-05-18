@@ -1,0 +1,96 @@
+*{
+    padding:0;
+    margin:0;
+}
+body{
+    background-color: #fff;
+    color: #999;
+}
+.container{
+    width:980px;
+    margin:0 auto;
+}
+.header{
+    padding:60px 0;
+}
+.header>h1>a{
+    text-decoration: none;
+    color:#286090;
+}
+.fl{
+    float:left;
+}
+.fr{
+    float:right;
+}
+.login-section{
+    border:1px solid #ddd;
+}
+.login-head{
+    font-size: 14px;
+    line-height: 25px;
+    padding:15px 30px;
+}
+.other{
+    text-decoration: none;
+    color:#999;
+    font-size: 12px;
+    float: right;
+}
+.other:hover{
+    color:#0c7ea9;
+}
+.inp-container{
+    padding:10px 30px;
+    font-size: 12px;
+}
+.inp{
+    border:1px solid #ddd;
+    font-size:12px;
+    color:#505050;
+    height:32px;
+    line-height: 32px;
+}
+.password{
+    width:260px;
+    padding-left:40px;
+    background: url(img/password.png) 10px no-repeat;
+}
+.username{
+    width:260px;
+    padding-left:40px;
+    background: url(img/username.png) 10px no-repeat;
+}
+.remeber-me{
+    vertical-align: middle;
+}
+.submit-btn{
+    width:300px;
+    color:#fff;
+    background-color: #286090;
+    cursor: pointer;
+    border:1px solid #286090;
+}
+.forget-pwd{
+    text-decoration: none;
+    color:#999;
+    margin-left:10px;
+}
+.forget-pwd:hover{
+    color:#0c7ea9;
+}
+.foot-title{
+    padding:15px 30px;
+    font-size: 12px;
+}
+.foot-img{
+    padding-left:30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+}
+.foot-img>a{
+    display: inline-block;
+    width:18px;
+    height:18px;
+    margin-right:5px;
+}

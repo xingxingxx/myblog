@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>首页</title>
-    <meta id="keywords" name="keywords" content=""/>
+    <meta name="keywords" content=""/>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
@@ -18,8 +18,15 @@
     <![endif]-->
 </head>
 <body>
-<!--[if lt IE 8]>
-<p>您使用的是一个 <strong>过时的</strong> 浏览器， 请 <a href="http://browsehappy.com/">点击这里</a> 升级您的浏览器。</p>
+<!--[if lt IE 9]>
+<div class="alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+    </button>
+    <p class="container">
+        <strong>提示!</strong> 您使用的IE浏览器版本较低，为了获得最佳的浏览体验，建议您升级您的浏览器或选用其它浏览器。&nbsp;&nbsp;
+        <a href="http://browsehappy.com/" class="btn btn-default" target="_blank">立即升级</a>
+    </p>
+</div>
 <![endif]-->
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
@@ -31,15 +38,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="index.html">
                 肖兴平的个人博客
             </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="side/index.html">首页</a></li>
-                <li><a href="side/news.html">互联网新闻</a></li>
-                <li><a href="side/life.html">我的文章</a></li>
+                <li class="active"><a href="index.html">首页</a></li>
+                <li><a href="#">互联网新闻</a></li>
+                <li><a href="#">我的文章</a></li>
                 <li><a href="#">关于我</a></li>
             </ul>
             <form class="navbar-form navbar-left" role="search">
@@ -49,56 +56,29 @@
                 <button type="submit" class="btn btn-primary">搜索</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" data-toggle="modal" data-target="#loginModal">登录</a></li>
-                <li><a href=""  data-toggle="modal" data-target="#registerModal"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;注册 </a></li>
+                <li><a href="" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;注册 </a></li>
+                <li><a href="" data-toggle="modal" data-target="#myModal">登录</a></li>
+            </ul>
         </div>
     </div>
+    <div class="no-boxshadow-nav"></div>
 </nav>
 
-
-<!--登录弹窗-->
-<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- 登录弹窗 -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">用户登录 欢迎加入我们！</h4>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal">
-                    <div style="height:25px;"></div>
-                    <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
-                        <div class="col-sm-9">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
-                        <div class="col-sm-9">
-                            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox"> 记住我 &nbsp;&nbsp;&nbsp;<a href="">忘记密码？</a>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-primary">登录</button>
-                        </div>
-                    </div>
-                </form>
+                ...
             </div>
             <div class="modal-footer">
-                <div style="height:20px;"></div>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
-        </div>
         </div>
     </div>
 </div>
@@ -152,15 +132,18 @@
                 <a class="pull-left hidden-xs" href="#">
                     <img src="_assets/img/news006.jpg" alt="..." class="media-img">
                 </a>
+
                 <div class="media-body">
                     <h4 class="media-heading" style="font-weight:bold;line-height:30px;"><span
                             class="label label-danger" style="font:12px 宋体;vertical-align:middle;">新</span>&nbsp;&nbsp;Nested
                         media heading <span style="font:12px 微软雅黑;float:right;"><span
                                 class="glyphicon glyphicon-time"></span>2014-12-15</span></h4>
+
                     <p class="font-media">
                         如今，o2o的概念越来越普及。 一个行业要是与o2o搭上边，瞬间就能成为关注的热点。餐饮外卖是最早o2o化的行业，竞争也日益白热化。
                         与传统餐饮业的低迷局面相反，线上餐饮业一派欣欣向荣的景象让不少传统餐饮商家起了小心思。 位于杭州武林广场商圈附近的妙...
                     </p>
+
                     <p class="tags">
                         <span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;&nbsp;&nbsp;产品经理，项目管控
                     </p>
@@ -171,15 +154,18 @@
                 <a class="pull-left hidden-xs" href="#">
                     <img src="_assets/img/news-03.jpg" alt="..." class="media-img">
                 </a>
+
                 <div class="media-body">
                     <h4 class="media-heading" style="font-weight:bold;line-height:30px;"><span
                             class="label label-danger" style="font:12px 宋体;vertical-align:middle;"">新</span>&nbsp;&nbsp;风先生：o2o浪潮下，给小餐馆的逆袭捷径
                         <span style="font:12px 微软雅黑;float:right;"><span class="glyphicon glyphicon-time"></span>2014-12-15</span>
                     </h4>
+
                     <p class="font-media">
                         如今，o2o的概念越来越普及。 一个行业要是与o2o搭上边，瞬间就能成为关注的热点。餐饮外卖是最早o2o化的行业，竞争也日益白热化。
                         与传统餐饮业的低迷局面相反，线上餐饮业一派欣欣向荣的景象让不少传统餐饮商家起了小心思。 位于杭州武林广场商圈附近的妙...
                     </p>
+
                     <p class="tags">
                         <span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;&nbsp;&nbsp;产品经理，项目管控
                     </p>
@@ -190,13 +176,16 @@
                 <a class="pull-left hidden-xs" href="#">
                     <img src="_assets/img/news007.jpg" alt="..." class="media-img">
                 </a>
+
                 <div class="media-body">
                     <h4 class="media-heading" style="font-weight:bold;">Nested media heading</h4>
+
                     <p class="font-media">
                         Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin
                         commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum
                         nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus....
                     </p>
+
                     <p class="tags">
                         <span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;&nbsp;&nbsp;产品经理，项目管控
                     </p>
@@ -207,13 +196,16 @@
                 <a class="pull-left hidden-xs" href="#">
                     <img src="_assets/img/news-03.jpg" alt="..." class="media-img">
                 </a>
+
                 <div class="media-body">
                     <h4 class="media-heading" style="font-weight:bold;"><span class="badge">新</span>&nbsp;&nbsp;风先生：o2o浪潮下，给小餐馆的逆袭捷径
                     </h4>
+
                     <p class="font-media">
                         如今，o2o的概念越来越普及。 一个行业要是与o2o搭上边，瞬间就能成为关注的热点。餐饮外卖是最早o2o化的行业，竞争也日益白热化。
                         与传统餐饮业的低迷局面相反，线上餐饮业一派欣欣向荣的景象让不少传统餐饮商家起了小心思。 位于杭州武林广场商圈附近的妙...
                     </p>
+
                     <p class="tags">
                         <span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;&nbsp;&nbsp;产品经理，项目管控
                     </p>
@@ -224,8 +216,10 @@
                 <a class="pull-left hidden-xs" href="#">
                     <img src="_assets/img/news-03.jpg" alt="..." class="media-img">
                 </a>
+
                 <div class="media-body">
                     <h4 class="media-heading" style="font-weight:bold;">风先生：o2o浪潮下，给小餐馆的逆袭捷径 </h4>
+
                     <p class="font-media">
                         如今，o2o的概念越来越普及。 一个行业要是与o2o搭上边，瞬间就能成为关注的热点。餐饮外卖是最早o2o化的行业，竞争也日益白热化。
                         与传统餐饮业的低迷局面相反，线上餐饮业一派欣欣向荣的景象让不少传统餐饮商家起了小心思。 位于杭州武林广场商圈附近的妙...
@@ -237,8 +231,10 @@
                 <a class="pull-left hidden-xs" href="#">
                     <img src="_assets/img/news-03.jpg" alt="..." class="media-img">
                 </a>
+
                 <div class="media-body">
                     <h4 class="media-heading" style="font-weight:bold;">风先生：o2o浪潮下，给小餐馆的逆袭捷径 </h4>
+
                     <p class="font-media">
                         如今，o2o的概念越来越普及。 一个行业要是与o2o搭上边，瞬间就能成为关注的热点。餐饮外卖是最早o2o化的行业，竞争也日益白热化。
                         与传统餐饮业的低迷局面相反，线上餐饮业一派欣欣向荣的景象让不少传统餐饮商家起了小心思。 位于杭州武林广场商圈附近的妙...
@@ -250,8 +246,10 @@
                 <a class="pull-left hidden-xs" href="#">
                     <img src="_assets/img/news-03.jpg" alt="..." class="media-img">
                 </a>
+
                 <div class="media-body">
                     <h4 class="media-heading" style="font-weight:bold;">风先生：o2o浪潮下，给小餐馆的逆袭捷径 </h4>
+
                     <p class="font-media">
                         如今，o2o的概念越来越普及。 一个行业要是与o2o搭上边，瞬间就能成为关注的热点。餐饮外卖是最早o2o化的行业，竞争也日益白热化。
                         与传统餐饮业的低迷局面相反，线上餐饮业一派欣欣向荣的景象让不少传统餐饮商家起了小心思。 位于杭州武林广场商圈附近的妙...
@@ -263,8 +261,10 @@
                 <a class="pull-left hidden-xs" href="#">
                     <img src="_assets/img/news-03.jpg" alt="..." class="media-img">
                 </a>
+
                 <div class="media-body">
                     <h4 class="media-heading" style="font-weight:bold;">风先生：o2o浪潮下，给小餐馆的逆袭捷径 </h4>
+
                     <p class="font-media">
                         如今，o2o的概念越来越普及。 一个行业要是与o2o搭上边，瞬间就能成为关注的热点。餐饮外卖是最早o2o化的行业，竞争也日益白热化。
                         与传统餐饮业的低迷局面相反，线上餐饮业一派欣欣向荣的景象让不少传统餐饮商家起了小心思。 位于杭州武林广场商圈附近的妙...
