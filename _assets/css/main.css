@@ -4691,6 +4691,10 @@ body {
   background: url(img/no-boxshadow-nav.png) 0 repeat;
   margin-bottom: -14px;
 }
+.form-control-feedback {
+  color: #999;
+  pointer-events: auto;
+}
 .clearfix:before,
 .clearfix:after,
 .dl-horizontal dd:before,

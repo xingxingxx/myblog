@@ -56,8 +56,8 @@
                 <button type="submit" class="btn btn-primary">搜索</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;注册 </a></li>
-                <li><a href="" data-toggle="modal" data-target="#myModal">登录</a></li>
+                <li><a href="#registerModal" data-toggle="modal"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;注册 </a></li>
+                <li><a href="#loginModal" data-toggle="modal">登录</a></li>
             </ul>
         </div>
     </div>
@@ -65,19 +65,76 @@
 </nav>
 
 <!-- 登录弹窗 -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                <h4 class="modal-title">用户登录</h4>
             </div>
             <div class="modal-body">
-                ...
+                <form>
+                    <div class="form-group">
+                        <label for="username">用户名</label>
+                        <input type="email" class="form-control" id="username" name="username" placeholder="邮箱/手机号/昵称">
+                    </div>
+                    <div class="form-group has-default has-feedback">
+                        <label for="password">密码</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="密码">
+                        <a href="#" title="点击显示/隐藏密码" id="togglePassword" class="form-control-feedback">
+                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> 记住我 &nbsp;&nbsp;<a href="#">忘记密码？</a>
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">登录</button>
+                </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <div class="btn-group text-center" role="group" aria-label="社交账号登录">
+                    <button type="button" class="btn btn-default">QQ登录</button>
+                    <button type="button" class="btn btn-default">微博登录</button>
+                    <button type="button" class="btn btn-default">微信登录</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">用户注册</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="email">邮箱</label>
+                        <input type="email" class="form-control" id="email" name="username" placeholder="输入邮箱">
+                    </div>
+                    <div class="form-group has-default has-feedback">
+                        <label for="passwordRegister">密码</label>
+                        <input type="password" class="form-control" id="passwordRegister" name="password" placeholder="密码">
+                        <a href="#" title="点击显示/隐藏密码" id="togglePasswordRegister" class="form-control-feedback">
+                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">立即注册</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group text-center" role="group" aria-label="社交账号登录">
+                    <button type="button" class="btn btn-default">QQ登录</button>
+                    <button type="button" class="btn btn-default">微博登录</button>
+                    <button type="button" class="btn btn-default">微信登录</button>
+                </div>
             </div>
         </div>
     </div>
@@ -282,6 +339,16 @@
 
 <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="_assets/js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
-<script src="_assets/js/bootstrap.min.js"></script>
+<script src="_assets/js/plugins.js"></script>
+<script>
+    $(function(){
+        $('#password').togglePassword({
+            el: '#togglePassword'
+        });
+        $('#passwordRegister').togglePassword({
+            el: '#togglePasswordRegister'
+        });
+    });
+</script>
 </body>
 </html>
