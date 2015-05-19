@@ -1,211 +1,89 @@
 <extend name="Common/base"/>
 <block name="body">
-<!--网站主体-->
-<div class="container main clearfix">
-    <aside class="complementary visible-lg-block">
-        <div class="panel panel-default">
-            <!-- Default panel contents -->
-            <div class="panel-heading">
-                <h4>最热文章</h4>
+    <!--网站主体-->
+    <div class="container main clearfix">
+        <aside class="complementary visible-lg-block">
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading">
+                    <h4>最热文章</h4>
+                </div>
+                <!-- List group -->
+                <ul class="list-group">
+                    <li class="list-group-item"><span class="badge">2032</span>风先生：o2o浪潮下，给小餐馆</li>
+                    <li class="list-group-item"><span class="badge">1242</span>Vestibulum at eros</li>
+                    <li class="list-group-item"><span class="badge">1242</span>风先生：o2o浪潮下，给小餐馆</li>
+                    <li class="list-group-item"><span class="badge">1242</span>Porta ac consectetur ac</li>
+                    <li class="list-group-item"><span class="badge">1242</span>风先生：o2o浪潮下，给小餐馆</li>
+                </ul>
             </div>
-            <!-- List group -->
-            <ul class="list-group">
-                <li class="list-group-item"><span class="badge">2032</span>风先生：o2o浪潮下，给小餐馆</li>
-                <li class="list-group-item"><span class="badge">1242</span>Vestibulum at eros</li>
-                <li class="list-group-item"><span class="badge">1242</span>风先生：o2o浪潮下，给小餐馆</li>
-                <li class="list-group-item"><span class="badge">1242</span>Porta ac consectetur ac</li>
-                <li class="list-group-item"><span class="badge">1242</span>风先生：o2o浪潮下，给小餐馆</li>
-            </ul>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4>文章排行</h4>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>文章排行</h4>
+                </div>
+                <!-- List group -->
+                <ul class="list-group">
+                    <li class="list-group-item"><span class="badge">2032</span>Cras justo odio</li>
+                    <li class="list-group-item"><span class="badge">1242</span>Dapibus ac facilisis in</li>
+                    <li class="list-group-item"><span class="badge">912</span>Morbi leo risus</li>
+                    <li class="list-group-item"><span class="badge">145</span>Porta ac consectetur ac</li>
+                    <li class="list-group-item"><span class="badge">123</span>Vestibulum at eros</li>
+                </ul>
             </div>
-            <!-- List group -->
-            <ul class="list-group">
-                <li class="list-group-item"><span class="badge">2032</span>Cras justo odio</li>
-                <li class="list-group-item"><span class="badge">1242</span>Dapibus ac facilisis in</li>
-                <li class="list-group-item"><span class="badge">912</span>Morbi leo risus</li>
-                <li class="list-group-item"><span class="badge">145</span>Porta ac consectetur ac</li>
-                <li class="list-group-item"><span class="badge">123</span>Vestibulum at eros</li>
-            </ul>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4>关注我</h4>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>关注我</h4>
+                </div>
+                <div class="panel-body">
+
+                </div>
             </div>
+        </aside>
+        <!--右侧文章列表-->
+        <div class="panel panel-default content">
             <div class="panel-body">
-
+                <ul class="media-list">
+                    <notempty name="topicList">
+                        <volist name="topicList" id="vo">
+                            <li class="media">
+                                <a class="pull-left hidden-xs" href="#">
+                                    <img src="__IMG__/news006.jpg" alt="..." class="media-img">
+                                </a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <strong>{$vo.title}</strong>
+                                        <small class="pull-right">
+                                            <span class="glyphicon glyphicon-time"></span>
+                                            {$vo.create_time}
+                                        </small>
+                                    </h4>
+                                    <p class="font-media">
+                                        {$vo.content}
+                                    </p>
+                                    <p class="tags">
+                                        <span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;&nbsp;&nbsp;产品经理，项目管控
+                                    </p>
+                                </div>
+                                <hr>
+                            </li>
+                        </volist>
+                        <else/>
+                        <li class="text-center"> aOh! 暂时还没有内容!</li>
+                    </notempty>
+                </ul>
             </div>
-        </div>
-    </aside>
-    <!--右侧文章列表-->
-    <div class="panel panel-default content">
-        <!-- <div class="panel-heading">
-             <h3>推荐文章
-                 <small>Subtext for header</small>
-             </h3>
-         </div>-->
-        <div class="panel-body">
-            <ul class="media-list">
-                <li class="media">
-                    <a class="pull-left hidden-xs" href="#">
-                        <img src="__IMG__/news006.jpg" alt="..." class="media-img">
-                    </a>
-
-                    <div class="media-body">
-                        <h4 class="media-heading" style="font-weight:bold;line-height:30px;"><span
-                                class="label label-danger" style="font:12px 宋体;vertical-align:middle;">新</span>&nbsp;&nbsp;Nested
-                            media heading <span style="font:12px 微软雅黑;float:right;"><span
-                                    class="glyphicon glyphicon-time"></span>2014-12-15</span></h4>
-
-                        <p class="font-media">
-                            如今，o2o的概念越来越普及。 一个行业要是与o2o搭上边，瞬间就能成为关注的热点。餐饮外卖是最早o2o化的行业，竞争也日益白热化。
-                            与传统餐饮业的低迷局面相反，线上餐饮业一派欣欣向荣的景象让不少传统餐饮商家起了小心思。 位于杭州武林广场商圈附近的妙...
-                        </p>
-
-                        <p class="tags">
-                            <span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;&nbsp;&nbsp;产品经理，项目管控
-                        </p>
-                    </div>
-                </li>
-                <hr>
-                <li class="media">
-                    <a class="pull-left hidden-xs" href="#">
-                        <img src="__IMG__/news-03.jpg" alt="..." class="media-img">
-                    </a>
-
-                    <div class="media-body">
-                        <h4 class="media-heading" style="font-weight:bold;line-height:30px;"><span
-                                class="label label-danger" style="font:12px 宋体;vertical-align:middle;"">新</span>&nbsp;&nbsp;风先生：o2o浪潮下，给小餐馆的逆袭捷径
-                            <span style="font:12px 微软雅黑;float:right;"><span class="glyphicon glyphicon-time"></span>2014-12-15</span>
-                        </h4>
-
-                        <p class="font-media">
-                            如今，o2o的概念越来越普及。 一个行业要是与o2o搭上边，瞬间就能成为关注的热点。餐饮外卖是最早o2o化的行业，竞争也日益白热化。
-                            与传统餐饮业的低迷局面相反，线上餐饮业一派欣欣向荣的景象让不少传统餐饮商家起了小心思。 位于杭州武林广场商圈附近的妙...
-                        </p>
-
-                        <p class="tags">
-                            <span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;&nbsp;&nbsp;产品经理，项目管控
-                        </p>
-                    </div>
-                </li>
-                <hr>
-                <li class="media">
-                    <a class="pull-left hidden-xs" href="#">
-                        <img src="__IMG__/news007.jpg" alt="..." class="media-img">
-                    </a>
-
-                    <div class="media-body">
-                        <h4 class="media-heading" style="font-weight:bold;">Nested media heading</h4>
-
-                        <p class="font-media">
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin
-                            commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum
-                            nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus....
-                        </p>
-
-                        <p class="tags">
-                            <span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;&nbsp;&nbsp;产品经理，项目管控
-                        </p>
-                    </div>
-                </li>
-                <hr>
-                <li class="media">
-                    <a class="pull-left hidden-xs" href="#">
-                        <img src="__IMG__/news-03.jpg" alt="..." class="media-img">
-                    </a>
-
-                    <div class="media-body">
-                        <h4 class="media-heading" style="font-weight:bold;"><span class="badge">新</span>&nbsp;&nbsp;风先生：o2o浪潮下，给小餐馆的逆袭捷径
-                        </h4>
-
-                        <p class="font-media">
-                            如今，o2o的概念越来越普及。 一个行业要是与o2o搭上边，瞬间就能成为关注的热点。餐饮外卖是最早o2o化的行业，竞争也日益白热化。
-                            与传统餐饮业的低迷局面相反，线上餐饮业一派欣欣向荣的景象让不少传统餐饮商家起了小心思。 位于杭州武林广场商圈附近的妙...
-                        </p>
-
-                        <p class="tags">
-                            <span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;&nbsp;&nbsp;产品经理，项目管控
-                        </p>
-                    </div>
-                </li>
-                <hr>
-                <li class="media">
-                    <a class="pull-left hidden-xs" href="#">
-                        <img src="__IMG__/news-03.jpg" alt="..." class="media-img">
-                    </a>
-
-                    <div class="media-body">
-                        <h4 class="media-heading" style="font-weight:bold;">风先生：o2o浪潮下，给小餐馆的逆袭捷径 </h4>
-
-                        <p class="font-media">
-                            如今，o2o的概念越来越普及。 一个行业要是与o2o搭上边，瞬间就能成为关注的热点。餐饮外卖是最早o2o化的行业，竞争也日益白热化。
-                            与传统餐饮业的低迷局面相反，线上餐饮业一派欣欣向荣的景象让不少传统餐饮商家起了小心思。 位于杭州武林广场商圈附近的妙...
-                        </p>
-                    </div>
-                </li>
-                <hr>
-                <li class="media">
-                    <a class="pull-left hidden-xs" href="#">
-                        <img src="__IMG__/news-03.jpg" alt="..." class="media-img">
-                    </a>
-
-                    <div class="media-body">
-                        <h4 class="media-heading" style="font-weight:bold;">风先生：o2o浪潮下，给小餐馆的逆袭捷径 </h4>
-
-                        <p class="font-media">
-                            如今，o2o的概念越来越普及。 一个行业要是与o2o搭上边，瞬间就能成为关注的热点。餐饮外卖是最早o2o化的行业，竞争也日益白热化。
-                            与传统餐饮业的低迷局面相反，线上餐饮业一派欣欣向荣的景象让不少传统餐饮商家起了小心思。 位于杭州武林广场商圈附近的妙...
-                        </p>
-                    </div>
-                </li>
-                <hr>
-                <li class="media">
-                    <a class="pull-left hidden-xs" href="#">
-                        <img src="__IMG__/news-03.jpg" alt="..." class="media-img">
-                    </a>
-
-                    <div class="media-body">
-                        <h4 class="media-heading" style="font-weight:bold;">风先生：o2o浪潮下，给小餐馆的逆袭捷径 </h4>
-
-                        <p class="font-media">
-                            如今，o2o的概念越来越普及。 一个行业要是与o2o搭上边，瞬间就能成为关注的热点。餐饮外卖是最早o2o化的行业，竞争也日益白热化。
-                            与传统餐饮业的低迷局面相反，线上餐饮业一派欣欣向荣的景象让不少传统餐饮商家起了小心思。 位于杭州武林广场商圈附近的妙...
-                        </p>
-                    </div>
-                </li>
-                <hr>
-                <li class="media">
-                    <a class="pull-left hidden-xs" href="#">
-                        <img src="__IMG__/news-03.jpg" alt="..." class="media-img">
-                    </a>
-
-                    <div class="media-body">
-                        <h4 class="media-heading" style="font-weight:bold;">风先生：o2o浪潮下，给小餐馆的逆袭捷径 </h4>
-
-                        <p class="font-media">
-                            如今，o2o的概念越来越普及。 一个行业要是与o2o搭上边，瞬间就能成为关注的热点。餐饮外卖是最早o2o化的行业，竞争也日益白热化。
-                            与传统餐饮业的低迷局面相反，线上餐饮业一派欣欣向荣的景象让不少传统餐饮商家起了小心思。 位于杭州武林广场商圈附近的妙...
-                        </p>
-                    </div>
-                </li>
-                <hr>
-            </ul>
         </div>
     </div>
-</div>
 </block>
 <block name="script">
-<script>
-    $(function () {
-        $('#password').togglePassword({
-            el: '#togglePassword'
+    <script>
+        $(function () {
+            $('#password').togglePassword({
+                el: '#togglePassword'
+            });
+            $('#passwordRegister').togglePassword({
+                el: '#togglePasswordRegister'
+            });
         });
-        $('#passwordRegister').togglePassword({
-            el: '#togglePasswordRegister'
-        });
-    });
-</script>
+    </script>
 </block>
