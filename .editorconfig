@@ -1,5 +1,5 @@
+#在不同的编辑器和IDE之间定义和维护一致的代码风格
 # editorconfig.org
-
 root = true
 
 [*]
