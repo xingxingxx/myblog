@@ -49,6 +49,7 @@
                                 <a class="pull-left hidden-xs" href="#">
                                     <img src="__IMG__/news006.jpg" alt="..." class="media-img">
                                 </a>
+
                                 <div class="media-body">
                                     <h4 class="media-heading">
                                         <strong>{$vo.title}</strong>
@@ -60,6 +61,7 @@
                                     <p class="font-media">
                                         {$vo.content}
                                     </p>
+
                                     <p class="tags">
                                         <span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;&nbsp;&nbsp;产品经理，项目管控
                                     </p>
@@ -75,90 +77,4 @@
         </div>
     </div>
 </block>
-<block name="script">
-    <script>
-        var MyValidator = function() {
-            var handleSubmit = function() {
-                $('.form-register').validate({
-                    errorElement : 'span',
-                    errorClass : 'help-block',
-                    focusInvalid : false,
-                    rules : {
-                        username : {
-                            required : true,
-                            rangelength : [2,18],
-                            remote : '{:U('User/check_name')}' //ajax验证用户名是否已存在
-                        },
-                        password : {
-                            required : true,
-                            rangelength : [6,18]
-                        },
-                        email : {
-                            required : true,
-                            email : true,
-                            remote : '{:U('User/check_email')}' //ajax验证邮箱是否已被使用
-                        }
-                    },
-                    messages : {
-                        username : {
-                            required : "用户名不能为空！",
-                            rangelength : "用户名必须为2~18个字符！",
-                            remote : "用户名已被注册！"
-                        },
-                        password : {
-                            required : "密码不能为空！",
-                            rangelength : "密码必须为6-8为的字母或数字！"
-                        },
-                        email : {
-                            required : "邮箱不能为空！",
-                            email : "邮箱格式不正确！",
-                            remote : '邮箱已被注册！'
-                        }
-                    },
-
-                    highlight : function(element) {
-                        $(element).closest('.form-group').addClass('has-error');
-                    },
-
-                    success : function(label) {
-                        label.closest('.form-group').removeClass('has-error');
-                        label.remove();
-                    },
-
-                    errorPlacement : function(error, element) {
-                        element.parent('div').append(error);
-                    },
-
-                    submitHandler : function(form) {
-                        form.submit();
-                    }
-                });
-
-                $('.form-horizontal input').keypress(function(e) {
-                    if (e.which == 13) {
-                        if ($('.form-horizontal').validate().form()) {
-                            $('.form-horizontal').submit();
-                        }
-                        return false;
-                    }
-                });
-            }
-            return {
-                init : function() {
-                    handleSubmit();
-                }
-            };
-
-        }();
-        MyValidator.init();
-
-        $(function () {
-            $('#password').togglePassword({
-                el: '#togglePassword'
-            });
-            $('#passwordRegister').togglePassword({
-                el: '#togglePasswordRegister'
-            });
-        });
-    </script>
-</block>
+<block name="script"></block>
