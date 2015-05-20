@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2015-05-19 13:05:23
+-- Generation Time: 2015-05-20 12:52:55
 -- 服务器版本： 5.6.17
 -- PHP Version: 5.5.12
 
@@ -81,15 +81,24 @@ CREATE TABLE IF NOT EXISTS `bbs_topic` (
 CREATE TABLE IF NOT EXISTS `bbs_user` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL,
-  `nickname` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
   `email` varchar(30) NOT NULL,
   `sex` bit(1) NOT NULL DEFAULT b'0',
-  `statement` varchar(255) NOT NULL,
-  `reg_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `statu` tinyint(4) NOT NULL,
-  `point` int(11) NOT NULL,
-  `ip` char(15) NOT NULL,
+  `sign` varchar(255) DEFAULT NULL,
+  `regtime` datetime DEFAULT NULL,
+  `status` tinyint(4) DEFAULT NULL,
+  `regip` char(15) DEFAULT NULL,
+  `token` char(20) NOT NULL,
+  `token_exptime` int(11) NOT NULL,
+  `avatar` char(35) NOT NULL,
+  `birthday` date NOT NULL,
+  `qq` char(10) NOT NULL,
+  `tel` char(11) NOT NULL,
+  `province` int(11) NOT NULL,
+  `city` int(11) NOT NULL,
+  `district` int(11) NOT NULL,
+  `community` int(11) NOT NULL,
+  `address` varchar(200) NOT NULL,
   PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 

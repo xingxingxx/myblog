@@ -56,11 +56,11 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label for="username">用户名</label>
-                        <input type="email" class="form-control" id="username" name="username" placeholder="邮箱/手机号/昵称">
+                        <label class="control-label" for="username">用户名</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="邮箱/手机号/昵称">
                     </div>
                     <div class="form-group has-default has-feedback">
-                        <label for="password">密码</label>
+                        <label class="control-label" for="password">密码</label>
                         <input type="password" class="form-control" id="password" name="password" placeholder="密码">
                         <a href="#" title="点击显示/隐藏密码" id="togglePassword" class="form-control-feedback">
                             <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
@@ -96,15 +96,19 @@
                 <h4 class="modal-title">用户注册</h4>
             </div>
             <div class="modal-body">
-                <form>
+                <form role="form" class="form-register" action="javascript:alert('验证成功,可以提交.');" method="post">
                     <div class="form-group">
-                        <label for="email">邮箱</label>
-                        <input type="email" class="form-control" id="email" name="username" placeholder="输入邮箱" required>
+                        <label class="control-label" for="usernameRegister">用户名</label>
+                        <input type="text" class="form-control" id="usernameRegister" name="username" placeholder="输入用户名">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="email">邮箱</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="输入邮箱">
                     </div>
                     <div class="form-group has-default has-feedback">
-                        <label for="passwordRegister">密码</label>
+                        <label class="control-label" for="passwordRegister">密码</label>
                         <input type="password" class="form-control" id="passwordRegister" name="password"
-                               placeholder="密码" required>
+                               placeholder="密码">
                         <a href="#" title="点击显示/隐藏密码" id="togglePasswordRegister" class="form-control-feedback">
                             <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                         </a>
