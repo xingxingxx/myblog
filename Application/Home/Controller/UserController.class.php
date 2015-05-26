@@ -45,17 +45,17 @@ class UserController extends Controller
     /**
      * 验证用户名是否已被注册
      */
-    public function check_name($username = '')
+    public function check_name()
     {
-        echo $this->User->where(array('username' => $username))->find() ? 'false' : 'true';
+        echo $this->User->where(array('username' => I('get.username')))->find() ? 'false' : 'true';
     }
 
     /**
      * 验证邮箱是否已被使用
      */
-    public function check_email($email = '')
+    public function check_email()
     {
-        echo $this->User->where(array('email' => $email))->find() ? 'false' : 'true';
+        echo $this->User->where(array('email' => I('get.email')))->find() ? 'false' : 'true';
     }
 
 }

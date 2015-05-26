@@ -1,7 +1,8 @@
 <?php
 /**
- * User: Ф��ƽ
+ * Created by PhpStorm.
+ * User: 肖兴平
  * Email: xx9815@qq.com
- * Date: 2015/5/19 0019
- * Time: 22:34
+ * Date: 2015/5/25
+ * Time: 16:54
  */

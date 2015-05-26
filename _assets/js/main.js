@@ -91,42 +91,7 @@ $('#form-login').validate({
     }
 });
 
-//注册验证
-$('#form-register').validate({
-    rules: {
-        username: {
-            required: true,
-            userName: true,
-            rangelength: [3, 18],
-            remote: "{:U('User/check_name')}" //ajax验证用户名是否已存在
-        },
-        password: {
-            required: true,
-            rangelength: [6, 18]
-        },
-        email: {
-            required: true,
-            email: true,
-            remote: "{:U('User/check_email')}" //ajax验证邮箱是否已被使用
-        }
-    },
-    messages: {
-        username: {
-            required: "用户名不能为空！",
-            rangelength: "用户名长度为3~18个字符！",
-            remote: "该用户名已被注册！"
-        },
-        password: {
-            required: "密码不能为空！",
-            rangelength: "密码长度必须为6-8为的字母或数字！"
-        },
-        email: {
-            required: "邮箱不能为空！",
-            email: "邮箱地址格式不正确！",
-            remote: '该邮箱地址已被使用！'
-        }
-    }
-});
+
 
 //显示密码
 $('#password').togglePassword({

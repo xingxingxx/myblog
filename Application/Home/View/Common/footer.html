@@ -54,7 +54,7 @@
                 <h4 class="modal-title">用户注册</h4>
             </div>
             <div class="modal-body">
-                <form role="form" id="form-register" action="javascript:alert('验证成功,可以提交.');" method="post">
+                <form role="form" id="form-register" action="{:U('User/register')}" method="post">
                     <div class="form-group">
                         <label class="control-label" for="usernameRegister">用户名</label>
                         <input type="text" class="form-control" id="usernameRegister" name="username" placeholder="输入用户名">
@@ -88,5 +88,43 @@
 <script>window.jQuery || document.write('<script src="__JS__/vendor/jquery-1.11.3.min.js"><\/script>')</script>
 <script src="__JS__/plugins.js"></script>
 <script src="__JS__/main.js"></script>
+<script>
+    //注册验证
+    $('#form-register').validate({
+        rules: {
+            username: {
+                required: true,
+                userName: true,
+                rangelength: [3, 18],
+                remote: "{:U('User/check_name')}" //ajax验证用户名是否已存在
+            },
+            password: {
+                required: true,
+                rangelength: [6, 18]
+            },
+            email: {
+                required: true,
+                email: true,
+                remote: "{:U('User/check_email')}" //ajax验证邮箱是否已被使用
+            }
+        },
+        messages: {
+            username: {
+                required: "用户名不能为空！",
+                rangelength: "用户名长度为3~18个字符！",
+                remote: "该用户名已被注册！"
+            },
+            password: {
+                required: "密码不能为空！",
+                rangelength: "密码长度必须为6-8为的字母或数字！"
+            },
+            email: {
+                required: "邮箱不能为空！",
+                email: "邮箱地址格式不正确！",
+                remote: '该邮箱地址已被使用！'
+            }
+        }
+    });
+</script>
 <block name="script">
 </block>
