@@ -56,7 +56,6 @@ class UserController extends Controller
      * @param $username     用户名
      * @param $password     密码
      * @param $email        邮箱
-     * @param $__hash__     表单令牌
      */
     public function register($username, $password, $email)
     {

@@ -29,8 +29,13 @@ jQuery.validator.addMethod("isPhone", function (value, element) {
 
 // 用户名字符验证
 jQuery.validator.addMethod("userName", function (value, element) {
-    return this.optional(element) || /^[\u0391-\uFFE5\w]+$/.test(value);
-}, "只能包含中文字、英文字母、数字和下划线!");
+    return this.optional(element) || /^[\u0391-\uFFE5\w]{3,30}$/.test(value);
+}, "长度为3-30位，且只能包含中文字、英文字母、数字和下划线!");
+
+//密码验证
+jQuery.validator.addMethod("password", function (value, element) {
+    return this.optional(element) || /^(?!\D+$)(?![^a-zA-Z]+$)[a-zA-Z0-9]{8,30}$/.test(value);
+}, "必须同时包含英文字母和数字，且长度为 8-30 位!");
 
 // 联系电话(手机/电话皆可)验证
 jQuery.validator.addMethod("isTel", function (value, element) {

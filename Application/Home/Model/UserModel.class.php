@@ -17,12 +17,12 @@ class UserModel extends Model{
     protected $_validate = array(
         /* 验证用户名 */
         array('username', 'require','用户名不为空' , self::EXISTS_VALIDATE), //用户名不为空
-        array('username', '3,18', '用户名长度不合法', self::EXISTS_VALIDATE, 'length'), //用户名长度不合法
+        array('username', '/^[\S]{3,30}$/','用户名不合法' , self::EXISTS_VALIDATE), //用户名不合法
         array('username', '', '用户名被占用', self::EXISTS_VALIDATE, 'unique'), //用户名被占用
 
         /* 验证密码 */
         array('password', 'require','密码不为空' , self::EXISTS_VALIDATE), //密码不为空
-        array('password', '6,30', '密码长度不合法', self::EXISTS_VALIDATE, 'length'), //密码长度不合法
+        array('password', '/^(?!\D+$)(?![^a-zA-Z]+$)[a-zA-Z0-9]{8,30}$/', '密码不合法', self::EXISTS_VALIDATE), //密码不合法
 
         /* 验证邮箱 */
         array('email', 'require','邮箱不为空' , self::EXISTS_VALIDATE), //邮箱不为空
@@ -73,7 +73,7 @@ class UserModel extends Model{
                 return '邮箱不合法或不存在，请重新填写邮箱。';
             }
         } else {
-            return $this->getError(); //错误详情见自动验证注释
+            return $this->getError(); //获取并返回错误详情
         }
     }
 
