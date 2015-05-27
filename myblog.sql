@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2015-05-20 12:52:55
+-- Generation Time: 2015-05-27 13:03:48
 -- 服务器版本： 5.6.17
 -- PHP Version: 5.5.12
 
@@ -81,17 +81,17 @@ CREATE TABLE IF NOT EXISTS `bbs_topic` (
 CREATE TABLE IF NOT EXISTS `bbs_user` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL,
-  `email` varchar(30) NOT NULL,
+  `password` char(32) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `sex` bit(1) NOT NULL DEFAULT b'0',
-  `sign` varchar(255) DEFAULT NULL,
-  `regtime` datetime DEFAULT NULL,
-  `status` tinyint(4) DEFAULT NULL,
-  `regip` char(15) DEFAULT NULL,
-  `token` char(20) NOT NULL,
+  `sign` varchar(255) NOT NULL,
+  `regtime` int(11) NOT NULL,
+  `status` tinyint(4) NOT NULL,
+  `regip` char(15) NOT NULL,
+  `token` char(32) NOT NULL,
   `token_exptime` int(11) NOT NULL,
   `avatar` char(35) NOT NULL,
-  `birthday` date NOT NULL,
+  `birthday` int(11) NOT NULL,
   `qq` char(10) NOT NULL,
   `tel` char(11) NOT NULL,
   `province` int(11) NOT NULL,
@@ -100,7 +100,16 @@ CREATE TABLE IF NOT EXISTS `bbs_user` (
   `community` int(11) NOT NULL,
   `address` varchar(200) NOT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=36 ;
+
+--
+-- 转存表中的数据 `bbs_user`
+--
+
+INSERT INTO `bbs_user` (`uid`, `username`, `password`, `email`, `sex`, `sign`, `regtime`, `status`, `regip`, `token`, `token_exptime`, `avatar`, `birthday`, `qq`, `tel`, `province`, `city`, `district`, `community`, `address`) VALUES
+(33, '123456', '96e79218965eb72c92a549dd5a330112', 'xx9815@qq.com', b'0', '', 1432724031, 0, '2130706433', '41dcce8e42e2c81ea4abb7ec74a28b90', 1432810431, '', 0, '', '', 0, 0, 0, 0, ''),
+(34, '1234567', '96e79218965eb72c92a549dd5a330112', 'xiao.xingping@163.com', b'0', '', 1432724066, 0, '2130706433', '248df3132d5b8cb34bfef0a784894b13', 1432810466, '', 0, '', '', 0, 0, 0, 0, ''),
+(35, 'admin', '7fa8282ad93047a4d6fe6111c93b308a', 'xx9815@qq.com1', b'0', '', 1432724129, 0, '2130706433', '5980141cd4bcdec614d21222cfa38e1b', 1432810529, '', 0, '', '', 0, 0, 0, 0, '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
