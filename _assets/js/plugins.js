@@ -1396,6 +1396,10 @@
             "password" == $( input ).attr( "type" ) ?
                 $( input ).attr( "type", "text" ) :
                 $( input ).attr( "type", "password" );
+
+            "password" == $( input ).attr( "type" ) ?
+                $( s.el).css('color','#999') :
+                $( s.el).css('color','#23527c');
         });
     };
 

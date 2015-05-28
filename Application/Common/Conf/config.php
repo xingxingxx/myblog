@@ -17,6 +17,15 @@ return array(
         'REPLY_EMAIL' => '', //回复EMAIL（留空则为发件人EMAIL）
         'REPLY_NAME'  => '', //回复名称（留空则为发件人名称）
     ),
+    //配置账号激活码有效期
+    'TOKEN_EXPIRE'         =>  60 * 60 * 24,    //24小时
+
+    //自动登录设置
+    'AUTO_LOGIN_TIME'  =>  60 * 60 * 24 * 7,    // Cookie有效期 ,7天
+
+    //加密KEY
+    'AUTH_KEY' => '4HT)D7fW1$?`JOR}^EA#b[@3BL.h~!z9<nK5&0w_',
+
     //数据库配置
     'DB_TYPE'   => 'mysqli', // 数据库类型
     'DB_HOST'   => 'localhost', // 服务器地址

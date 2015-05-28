@@ -33,7 +33,7 @@ jQuery.validator.addMethod("userName", function (value, element) {
 }, "长度为3-30位，且只能包含中文字、英文字母、数字和下划线!");
 
 //密码验证
-jQuery.validator.addMethod("password", function (value, element) {
+jQuery.validator.addMethod("isPassword", function (value, element) {
     return this.optional(element) || /^(?!\D+$)(?![^a-zA-Z]+$)[a-zA-Z0-9]{8,30}$/.test(value);
 }, "必须同时包含英文字母和数字，且长度为 8-30 位!");
 
@@ -66,20 +66,6 @@ $.validator.setDefaults({
 
     errorPlacement: function (error, element) {
         element.parent('div').append(error);
-    },
-
-    submitHandler: function (form) {
-        $.post($(form).attr("action"), $(form).serialize(), success, "json");
-        return false;
-        function success(data) {
-            if (data.status) {
-                $(form).hide();
-                $(form).parent('div').append('<div style="line-height: 24px;">'+data.info
-                +'<a style="margin-top:15px;" class="login-email btn btn-primary btn-block" onclick="loginEmail();">登录邮箱</a></div>');
-            } else {
-                alert(data.info);
-            }
-        }
     }
 });
 
@@ -91,11 +77,11 @@ $(document).ajaxStart(function () {
 });
 
 //跳转到指定的邮箱登录页面
-function loginEmail(){
-    var uurl = $(".email-url").html();
+function loginEmail() {
+    var uurl = $("#form-register input[name=email]").val();
     uurl = gotoEmail(uurl);
     if (uurl != "") {
-        window.open("http://"+uurl);
+        window.open("http://" + uurl);
     } else {
         alert("抱歉!未找到对应的邮箱登录地址，请自己登录邮箱查看邮件！");
     }
@@ -151,35 +137,7 @@ function gotoEmail($mail) {
     }
 }
 
-
-//登录验证
-$('#form-login').validate({
-    rules: {
-        username: {
-            required: true
-        },
-        password: {
-            required: true,
-            rangelength: [6, 18]
-        }
-    },
-    messages: {
-        username: {
-            required: "用户名不能为空！"
-        },
-        password: {
-            required: "密码不能为空！",
-            rangelength: "密码长度必须为6-8为的字母或数字！"
-        }
-    }
-});
-
-
 //显示密码
-$('#password').togglePassword({
-    el: '#togglePassword'
-});
-
-$('#passwordRegister').togglePassword({
-    el: '#togglePasswordRegister'
+$('.password').togglePassword({
+    el: '.toggle-password'
 });

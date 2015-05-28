@@ -10,12 +10,9 @@
 /**
  * 用户中心控制器
  */
-
 namespace Home\Controller;
 
-use Think\Controller;
-
-class UserController extends Controller
+class UserController extends HomeController
 {
 
     private $User;
@@ -61,7 +58,7 @@ class UserController extends Controller
     {
         $result=$this->User->register($username, $password, $email);
         if($result===true){
-            $this->success('系统已发送激活邮件到您的邮箱：<br><strong class="email-url">'.$email.'</strong><br>请点击邮件中的链接激活帐号。');
+            $this->success('系统已发送激活邮件到您的邮箱：<br><strong>'.$email.'</strong><br>请点击邮件中的链接激活帐号。');
         }else{
             $this->error($result);
         }
@@ -75,9 +72,11 @@ class UserController extends Controller
             'token'  => I('get.token'),
             'status' => 0,
         );
-        $data=$this->User->field('uid, token_exptime')->where($map)->find();
+        $data=$this->User->field('uid, reg_time')->where($map)->find();
         if($data){
-            if(time()>$data['token_exptime']){
+            $token_expire = C('TOKEN_EXPIRE');//从配置中获取激活码有效期
+            $token_expire = $data['reg_time'] + $token_expire;
+            if(time()>$token_expire){
                 $this->error('您的激活有效期已过，请登录您的帐号重新发送激活邮件.', U('Index/index'), 5);
             }else{
                 $data['status']=1;
@@ -93,4 +92,54 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * 用户登录认证
+     * @param $username 用户名
+     * @param $password 密码
+     */
+    public function login($username, $password, $remeber_me){
+        $map=array();
+        $map['username|email|mobile']=$username;
+        $user = $this->User->field('uid, username, password, status')->where($map)->find();
+        if(is_array($user) && $user['status']){
+            // 验证用户密码
+            if(think_md5($password) === $user['password']){
+                //更新用户登录信息
+                $user['last_login_time'] =  NOW_TIME;
+                $user['last_login_ip'] = get_client_ip(1);
+                $user['login'] = array('exp', 'login+1');
+                $this->User->save($user);
+                // 记录登录SESSION和COOKIES
+                $auth = array(
+                    'uid'             => $user['uid'],
+                    'username'        => $user['username'],
+                    'last_login_time' => $user['last_login_time'],
+                );
+                session('user_auth', $auth);
+                session('user_auth_sign', data_auth_sign($auth));
+                //是否自动登录
+                if($remeber_me==1){
+                    $auto=$user['uid'].'|'.$user['username'].'|'.$user['last_login_ip'];
+                    $auto=think_base64($auto, 1);//加密
+                    cookie('auto',$auto,C('AUTO_LOGIN_TIME'));
+                }
+                $this->success('登录成功!');
+            } else {
+                $this->error('密码错误!');
+            }
+        } else {
+            $this->error('用户不存在或未激活!');
+        }
+    }
+
+    /**
+     * 注销当前用户
+     * @return void
+     */
+    public function logout(){
+        session('user_auth', null);
+        session('user_auth_sign', null);
+        cookie('auto', null);
+        $this->success('注销成功!');
+    }
 }

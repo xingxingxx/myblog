@@ -33,9 +33,9 @@ class UserModel extends Model{
 
     /* 用户模型自动完成 */
     protected $_auto = array(
-        array('password', 'md5', self::MODEL_BOTH, 'function'),
-        array('regtime', NOW_TIME, self::MODEL_INSERT),
-        array('regip', 'get_client_ip', self::MODEL_INSERT, 'function', 1),
+        array('password', 'think_md5', self::MODEL_BOTH, 'function'),
+        array('reg_time', NOW_TIME, self::MODEL_INSERT),
+        array('reg_ip', 'get_client_ip', self::MODEL_INSERT, 'function', 1),
     );
 
     /**
@@ -46,15 +46,13 @@ class UserModel extends Model{
      * @return integer          注册成功-用户信息，注册失败-错误信息
      */
     public function register($username, $password, $email){
-        $token = md5($username . time());//创建用于激活识别码
-        $token_exptime = time() + 60 * 60 * 24;//过期时间为24小时后
+        $token = think_md5($username . time());//创建激活码
         //创建数组
         $data = array(
             'username' => $username,
             'password' => $password,
             'email' => $email,
             'token' => $token,
-            'token_exptime' => $token_exptime,
         );
         if($this->create($data)){
             //邮件内容
@@ -75,81 +73,6 @@ class UserModel extends Model{
         } else {
             return $this->getError(); //获取并返回错误详情
         }
-    }
-
-    /**
-     * 用户登录认证
-     * @param  string  $username 用户名
-     * @param  string  $password 用户密码
-     * @param  integer $type     用户名类型 （1-用户名，2-邮箱，3-手机，4-UID）
-     * @return integer           登录成功-用户ID，登录失败-错误编号
-     */
-    public function login($username, $password, $type = 1){
-        $map = array();
-        switch ($type) {
-            case 1:
-                $map['username'] = $username;
-                break;
-            case 2:
-                $map['email'] = $username;
-                break;
-            case 3:
-                $map['mobile'] = $username;
-                break;
-            case 4:
-                $map['id'] = $username;
-                break;
-            default:
-                return 0; //参数错误
-        }
-
-        /* 获取用户数据 */
-        $user = $this->where($map)->find();
-        if(is_array($user) && $user['status']){
-            /* 验证用户密码 */
-            if(think_ucenter_md5($password, UC_AUTH_KEY) === $user['password']){
-                $this->updateLogin($user['id']); //更新用户登录信息
-                return $user['id']; //登录成功，返回用户ID
-            } else {
-                return -2; //密码错误
-            }
-        } else {
-            return -1; //用户不存在或被禁用
-        }
-    }
-
-    /**
-     * 注销当前用户
-     * @return void
-     */
-    public function logout(){
-        session('user_auth', null);
-        session('user_auth_sign', null);
-    }
-
-    /**
-     * 自动登录用户
-     * @param  integer $user 用户信息数组
-     */
-    private function autoLogin($user){
-        /* 更新登录信息 */
-        $data = array(
-            'uid'             => $user['uid'],
-            'login'           => array('exp', '`login`+1'),
-            'last_login_time' => NOW_TIME,
-            'last_login_ip'   => get_client_ip(1),
-        );
-        $this->save($data);
-
-        /* 记录登录SESSION和COOKIES */
-        $auth = array(
-            'uid'             => $user['uid'],
-            'username'        => get_username($user['uid']),
-            'last_login_time' => $user['last_login_time'],
-        );
-
-        session('user_auth', $auth);
-        session('user_auth_sign', data_auth_sign($auth));
     }
 
 }

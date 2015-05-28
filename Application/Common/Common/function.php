@@ -50,3 +50,62 @@ function think_send_mail($to, $name, $subject = '', $body = '', $attachment = nu
     }
     return $mail->Send() ? true : $mail->ErrorInfo;
 }
+
+/**
+ * 数据签名认证
+ * @param  array $data 被认证的数据
+ * @return string       签名
+ * @author 麦当苗儿 <zuojiazi@vip.qq.com>
+ */
+function data_auth_sign($data)
+{
+    //数据类型检测
+    if (!is_array($data)) {
+        $data = (array)$data;
+    }
+    ksort($data); //排序
+    $code = http_build_query($data); //url编码并生成query字符串
+    $sign = sha1($code); //生成签名
+    return $sign;
+}
+
+/**
+ * 检测用户是否登录
+ * @return integer 0-未登录，大于0-当前登录用户ID
+ * @author 麦当苗儿 <zuojiazi@vip.qq.com>
+ */
+function is_login(){
+    $user = session('user_auth');
+    if (empty($user)) {
+        return 0;
+    } else {
+        return session('user_auth_sign') == data_auth_sign($user) ? $user['uid'] : 0;
+    }
+}
+
+/**
+ * 系统非常规MD5加密方法
+ * @param  string $str 要加密的字符串
+ * @return string
+ */
+function think_md5($str){
+    return '' === $str ? '' : md5(sha1($str) . C('AUTH_KEY'));
+}
+
+/**
+ *
+ * 自定义可逆的加密解密
+ * 默认type=0解密，type=1加密
+ *
+ * @param $value 要加密解密的字符串
+ * @param int $type 设置加密还是解密
+ * @return string
+ */
+function think_base64($value, $type=0){
+    $key = md5(C('AUTH_KEY'));
+    if($type){
+        return str_replace('==','',base64_encode($key^$value));
+    }
+    $value = base64_decode($value);
+    return $key^$value;
+}

@@ -36,9 +36,25 @@
                 <button type="submit" class="btn btn-primary">搜索</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#registerModal" data-toggle="modal"><span class="glyphicon glyphicon-user"
-                                                                       aria-hidden="true"></span>&nbsp;注册 </a></li>
-                <li><a href="#loginModal" data-toggle="modal">登录</a></li>
+                <if condition="is_login()">
+                    <li>
+                        <a href="{:U('User/index')}" title="个人中心">
+                            <img src="" alt="头像" class="img-rounded" height="20">
+                            {:session('user_auth.username')} </a>
+                    </li>
+                    <li>
+                        <a href="{:U('User/logout')}">
+                            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                            注销 </a>
+                    </li>
+                    <else/>
+                    <li>
+                        <a href="#registerModal" data-toggle="modal">注册 </a>
+                    </li>
+                    <li><a href="#loginModal" data-toggle="modal">
+                        <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+                        登录</a></li>
+                </if>
             </ul>
         </div>
     </div>
