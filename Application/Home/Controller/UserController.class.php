@@ -97,7 +97,7 @@ class UserController extends HomeController
      * @param $username 用户名
      * @param $password 密码
      */
-    public function login($username, $password, $remeber_me){
+    public function login($username, $password, $remeber_me=0){
         $map=array();
         $map['username|email|mobile']=$username;
         $user = $this->User->field('uid, username, password, status')->where($map)->find();
