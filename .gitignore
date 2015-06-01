@@ -1,4 +1,4 @@
 # phpstorm配置文件夹
 .idea/
 #系统运行时文件夹
-Application/Runtime/
+Runtime/

@@ -1,0 +1,182 @@
+<footer>
+    Copyright © 2009-2013 YiXieShi. 肖兴平 版权所有<br>
+    粤ICP备09139612号
+</footer>
+<!-- 登录弹窗 -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">用户登录</h4>
+            </div>
+            <div class="modal-body">
+                <form  role="form" id="form-login" action="{:U('User/login')}" method="post">
+                    <div class="form-group">
+                        <label class="control-label" for="username">用户名</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="邮箱/手机号/昵称">
+                    </div>
+                    <div class="form-group has-default has-feedback">
+                        <label class="control-label" for="password">密码</label>
+                        <input type="password" class="form-control password" id="password" name="password" placeholder="密码">
+                        <a href="#" title="点击显示密码" class="form-control-feedback toggle-password">
+                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="remeber_me" value="1" checked> 记住我 &nbsp;&nbsp;<a href="#">忘记密码？</a>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="alert alert-danger hidden" role="alert"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">登录</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group text-center" role="group" aria-label="社交账号登录">
+                    <button type="button" class="btn btn-default">QQ登录</button>
+                    <button type="button" class="btn btn-default">微博登录</button>
+                    <button type="button" class="btn btn-default">微信登录</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--注册弹窗-->
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">用户注册</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" id="form-register" action="{:U('User/register')}" method="post">
+                    <div class="form-group">
+                        <label class="control-label" for="username2">用户名</label>
+                        <input type="text" class="form-control" id="username2" name="username" placeholder="输入用户名">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="email">邮箱</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="输入邮箱">
+                    </div>
+                    <div class="form-group has-default has-feedback">
+                        <label class="control-label" for="password2">密码</label>
+                        <input type="password" class="form-control password" id="password2" name="password"
+                               placeholder="密码">
+                        <a href="#" title="点击显示密码" class="form-control-feedback toggle-password">
+                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <div class="form-group">
+                        <div class="alert alert-danger hidden" role="alert"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">立即注册</button>
+                </form>
+                <div class="hidden">
+                    <div class="alert alert-success" role="alert"></div> <br>
+                    <a class="btn btn-primary btn-block" onclick="loginEmail();">登录邮箱</a>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group text-center" role="group" aria-label="社交账号登录">
+                    <button type="button" class="btn btn-default">QQ登录</button>
+                    <button type="button" class="btn btn-default">微博登录</button>
+                    <button type="button" class="btn btn-default">微信登录</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="__JS__/vendor/jquery-1.11.3.min.js"><\/script>')</script>
+<script src="__JS__/plugins.js"></script>
+<script src="__JS__/main.js"></script>
+<script>
+    //注册验证
+    $('#form-register').validate({
+        rules: {
+            username: {
+                required: true,
+                userName: true,
+                remote: "{:U('User/check_name')}" //ajax验证用户名是否已存在
+            },
+            password: {
+                required: true,
+                isPassword: true
+            },
+            email: {
+                required: true,
+                email: true,
+                remote: "{:U('User/check_email')}" //ajax验证邮箱是否已被使用
+            }
+        },
+        messages: {
+            username: {
+                required: "用户名不能为空！",
+                remote: "该用户名已被注册！"
+            },
+            password: {
+                required: "密码不能为空！",
+            },
+            email: {
+                required: "邮箱不能为空！",
+                email: "邮箱地址格式不正确！",
+                remote: '该邮箱地址已被使用！'
+            }
+        },
+        submitHandler: function (form) {
+            $.post($(form).attr("action"), $(form).serialize(), success, "json");
+            return false;
+            function success(data) {
+                if (data.status) {
+                    $(form).hide();
+                    $(form).parent('div').find('.hidden').removeClass('hidden').find('.alert-success').html(data.info);
+                } else {
+                    $(form).find('.alert-danger').removeClass('hidden').text(data.info);
+                }
+            }
+        }
+    });
+    //登录验证
+    $('#form-login').validate({
+        rules: {
+            username: {
+                required: true,
+                rangelength: [3, 30]
+            },
+            password: {
+                required: true,
+                isPassword: true
+            }
+        },
+        messages: {
+            username: {
+                required: "用户名不能为空！",
+                rangelength: "用户名长度为3-30！"
+            },
+            password: {
+                required: "密码不能为空！",
+            }
+        },
+        submitHandler: function (form) {
+            $.post($(form).attr("action"), $(form).serialize(), success, "json");
+            return false;
+            function success(data) {
+                if (data.status) {
+                    window.location.reload();//刷新当前页
+                } else {
+                    $(form).find('.alert-danger').removeClass('hidden').text(data.info);
+                }
+            }
+        }
+    });
+</script>
+<block name="script">
+</block>
