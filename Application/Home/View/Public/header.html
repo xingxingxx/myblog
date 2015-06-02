@@ -18,13 +18,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="__ROOT__">
                 肖兴平的个人博客
             </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="index.html">首页</a></li>
+                <li <if condition="$module eq 'Index'">class="active"</if>><a href="__ROOT__">首页</a></li>
                 <li><a href="#">互联网新闻</a></li>
                 <li><a href="#">我的文章</a></li>
                 <li><a href="#">关于我</a></li>
@@ -37,9 +37,9 @@
             </form>
             <ul class="nav navbar-nav navbar-right">
                 <if condition="is_login()">
-                    <li>
+                    <li <if condition="$module eq 'User'">class="active"</if>>
                         <a href="{:U('User/index')}" title="个人中心">
-                            <img src="" alt="头像" class="img-circle" height="20">
+                            <img src="__IMG__/user.jpg" alt="头像" class="img-rounded" height="20">&nbsp;
                             {:session('user_auth.username')} </a>
                     </li>
                     <li>

@@ -1,5 +1,6 @@
 body {
   padding-top:50px;
+  background: url(img/body-bg.png) 0 repeat;
 }
 .navbar-default{
   background-color: #336699;
@@ -68,6 +69,12 @@ body {
     margin-bottom: -14px;
   }
 }
+.panel {
+  .box-shadow(1px 2px 2px rgba(0,0,0,.2));
+}
+.panel-default {
+  .panel-variant(#eee; @panel-default-text; @panel-default-heading-bg; #eee);
+}
 .form-control-feedback{
   color:#999;
   pointer-events:auto;
@@ -75,6 +82,10 @@ body {
 .complementary{
   float:right;
   width:280px;
+}
+.left{
+  float:left;
+  width:220px;
 }
 .list-group-item{
   border:none;

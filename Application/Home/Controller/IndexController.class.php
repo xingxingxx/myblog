@@ -1,6 +1,12 @@
 <?php
 namespace Home\Controller;
 class IndexController extends HomeController {
+    //构造方法
+    public function __construct()
+    {
+        parent::__construct();
+        $this->module='Index';
+    }
     public function index(){
         $Topic=M('Topic');
         $topicList=$Topic->select();

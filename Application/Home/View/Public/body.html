@@ -1,1 +1,15 @@
-<block name="body"></block>
+<switch name='module'>
+    <case value='User'>
+        <div class="container main">
+            <div class="row">
+                <block name="left"></block>
+                <block name="main"></block>
+                <block name="right"></block>
+            </div>
+        </div>
+    </case>
+    <case value='Index'>
+        <block name="body"></block>
+    </case>
+    <default/>
+</switch>
