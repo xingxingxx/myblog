@@ -1,11 +1,5 @@
 <?php
 return array(
-    //模板相关配置
-    'TMPL_PARSE_STRING' => array(
-        '__IMG__'    => __ROOT__ . '/Public/img',
-        '__CSS__'    => __ROOT__ . '/Public/css',
-        '__JS__'     => __ROOT__ . '/Public/js',
-    ),
     //邮件配置
     'THINK_EMAIL' => array(
         'SMTP_HOST'   => 'smtp.exmail.qq.com', //SMTP服务器
@@ -23,7 +17,7 @@ return array(
     //自动登录设置
     'AUTO_LOGIN_TIME'  =>  60 * 60 * 24 * 7,    // Cookie有效期 ,7天
 
-    //加密KEY
+    //用户登录密码加密KEY
     'AUTH_KEY' => '4HT)D7fW1$?`JOR}^EA#b[@3BL.h~!z9<nK5&0w_',
 
     //数据库配置
