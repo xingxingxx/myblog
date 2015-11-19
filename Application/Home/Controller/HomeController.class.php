@@ -23,24 +23,8 @@ class HomeController extends Controller {
 
     protected function _initialize(){
         //自动登录操作
-        if(isset($_COOKIE['auto']) && !is_login()){
-            $auto =explode('|',think_base64($_COOKIE['auto']));
-            if($auto[2] == get_client_ip(1)){
-                $map =array(
-                    'uid'=>$auto[0],
-                    'username' =>$auto[1],
-                );
-                $user= M('User')->where($map)->find();
-                if($user){
-                    $auth = array(
-                        'uid'             => $user['uid'],
-                        'username'        => $user['username'],
-                        'last_login_time' => $user['last_login_time'],
-                    );
-                    session('user_auth', $auth);
-                    session('user_auth_sign', data_auth_sign($auth));
-                }
-            }
+        if(isset($_COOKIE['web_site_auto']) && !is_login()){
+            D('User')->autoLogin();
         }
     }
 

@@ -24,10 +24,12 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li <if condition="$module eq 'Index'">class="active"</if>><a href="__ROOT__">首页</a></li>
-                <li><a href="#">互联网新闻</a></li>
-                <li><a href="#">我的文章</a></li>
-                <li><a href="#">关于我</a></li>
+                <li <eq name="hover" value="index">class="active"</eq>><a href="__ROOT__">首页</a></li>
+                <li <eq name="hover" value="news">class="active"</eq>><a href="{:U('Topic/news')}">互联网新闻</a></li>
+                <li <eq name="hover" value="">class="active"</eq>><a href="{:U('Topic/news')}">发现</a></li>
+                <li <eq name="hover" value="">class="active"</eq>><a href="{:U('Topic/news')}">站内文章</a></li>
+                <li <eq name="hover" value="topic">class="active"</eq>><a href="#">教程</a></li>
+                <li <eq name="hover" value="about">class="active"</eq>><a href="#">关于我</a></li>
             </ul>
             <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
@@ -37,7 +39,7 @@
             </form>
             <ul class="nav navbar-nav navbar-right">
                 <if condition="is_login()">
-                    <li <if condition="$module eq 'User'">class="active"</if>>
+                    <li <eq name="hover" value="user">class="active"</eq>>
                         <a href="{:U('User/index')}" title="个人中心">
                             <img src="__IMG__/user.jpg" alt="头像" class="img-rounded" height="20">&nbsp;
                             {:session('user_auth.username')} </a>
@@ -60,3 +62,98 @@
     </div>
     <div class="no-boxshadow-nav"></div>
 </nav>
+
+<if condition="!is_login()">
+<!-- 登录弹窗 -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">用户登录</h4>
+            </div>
+            <div class="modal-body">
+                <form  role="form" id="form-login" action="{:U('User/login')}" method="post">
+                    <div class="form-group">
+                        <label class="control-label" for="username">用户名</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="邮箱/手机号/昵称">
+                    </div>
+                    <div class="form-group has-default has-feedback">
+                        <label class="control-label" for="password">密码</label>
+                        <input type="password" class="form-control password" id="password" name="password" placeholder="密码">
+                        <a href="#" title="点击显示密码" class="form-control-feedback toggle-password">
+                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="remeber_me" value="1" checked> 记住我 &nbsp;&nbsp;<a href="#">忘记密码？</a>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="alert alert-danger hidden" role="alert"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">登录</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group text-center" role="group" aria-label="社交账号登录">
+                    <button type="button" class="btn btn-default">QQ登录</button>
+                    <button type="button" class="btn btn-default">微博登录</button>
+                    <button type="button" class="btn btn-default">微信登录</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--注册弹窗-->
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">用户注册</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" id="form-register" action="{:U('User/register')}" method="post">
+                    <div class="form-group">
+                        <label class="control-label" for="username2">用户名</label>
+                        <input type="text" class="form-control" id="username2" name="username" placeholder="输入用户名">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="email">邮箱</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="输入邮箱">
+                    </div>
+                    <div class="form-group has-default has-feedback">
+                        <label class="control-label" for="password2">密码</label>
+                        <input type="password" class="form-control password" id="password2" name="password"
+                               placeholder="密码">
+                        <a href="#" title="点击显示密码" class="form-control-feedback toggle-password">
+                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <div class="form-group">
+                        <div class="alert alert-danger hidden" role="alert"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">立即注册</button>
+                </form>
+                <div class="hidden">
+                    <div class="alert alert-success" role="alert"></div> <br>
+                    <a class="btn btn-primary btn-block" onclick="loginEmail();">登录邮箱</a>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group text-center" role="group" aria-label="社交账号登录">
+                    <button type="button" class="btn btn-default">QQ登录</button>
+                    <button type="button" class="btn btn-default">微博登录</button>
+                    <button type="button" class="btn btn-default">微信登录</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</if>

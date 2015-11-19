@@ -1,0 +1,53 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>后台管理</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <link rel="icon" href="__ROOT__/favicon.ico">
+    <link rel="stylesheet" href="__CSS__/admin.css">
+    <script src="__JS__/modernizr-2.8.3.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="__JS__/respond-1.4.2.min.js"></script>
+    <![endif]-->
+</head>
+<body class="login-bg">
+    <div class="panel panel-default login-fm">
+        <div class="panel-heading">登录后台管理系统</div>
+        <div class="panel-body">
+            <form  role="form" id="form-login" action="__SELF__" method="post">
+                <div class="form-group">
+                    <label class="control-label" for="username">用户名</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="邮箱/手机号/昵称">
+                </div>
+                <div class="form-group has-default has-feedback">
+                    <label class="control-label" for="password">密码</label>
+                    <input type="password" class="form-control password" id="password" name="password" placeholder="密码">
+                    <a href="#" title="点击显示密码" class="form-control-feedback toggle-password">
+                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                    </a>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="remeber_me" value="1" checked> 记住我 &nbsp;&nbsp;<a href="#">忘记密码？</a>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="alert alert-danger hidden" role="alert"></div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">登录</button>
+            </form>
+        </div>
+    </div>
+    <script src="__JS__/jquery-1.11.3.min.js"></script>
+    <script src="__JS__/bootstrap.min.js"></script>
+    <script src="__JS__/jquery.validate.min.js"></script>
+    <script src="__JS__/common.js"></script>
+</body>
+</html>

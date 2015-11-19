@@ -1,31 +1,30 @@
 <extend name="Public/base"/>
-<block name="left">
-    <include file="left"/>
-</block>
-<block name="right">
-    <include file="right"/>
-</block>
-<block name="main">
-    <div class="col-md-7">
-        <div>
+<block name="body">
+    <div class="container mt25">
+        <div class="row">
+            <include file="left"/>
+            <div class="col-md-7">
+                <div>
 
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">发布动态</h4>
-            </div>
-            <div class="panel-body" style="height:120px;">
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">发布动态</h4>
+                    </div>
+                    <div class="panel-body" style="height:120px;">
 
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">最新动态</h4>
-            </div>
-            <div class="panel-body" style="height:420px;">
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">最新动态</h4>
+                    </div>
+                    <div class="panel-body" style="height:420px;">
 
+                    </div>
+                </div>
             </div>
+            <include file="right"/>
         </div>
     </div>
 </block>
-<block name="script"></block>

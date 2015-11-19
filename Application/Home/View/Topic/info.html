@@ -1,0 +1,57 @@
+<extend name="Public/base"/>
+<block name="body">
+   <!--网站主体-->
+    <div class="container mt25">
+        <ol class="breadcrumb">
+            <li><a href="{:U('Index/index')}">首页</a></li>
+            <li><a href="#">文章列表</a></li>
+            <li class="active">文章详情</li>
+        </ol>
+        <div class="aside visible-lg-block">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">相关推荐</h3>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item"><span class="badge">2032</span>风先生：o2o浪潮下，给小餐馆</li>
+                    <li class="list-group-item"><span class="badge">1242</span>Vestibulum at eros</li>
+                    <li class="list-group-item"><span class="badge">1242</span>风先生：o2o浪潮下，给小餐馆</li>
+                    <li class="list-group-item"><span class="badge">1242</span>Porta ac consectetur ac</li>
+                    <li class="list-group-item"><span class="badge">1242</span>风先生：o2o浪潮下，给小餐馆</li>
+                </ul>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">文章排行</h3>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item"><span class="badge">2032</span>Cras justo odio</li>
+                    <li class="list-group-item"><span class="badge">1242</span>Dapibus ac facilisis in</li>
+                    <li class="list-group-item"><span class="badge">912</span>Morbi leo risus</li>
+                    <li class="list-group-item"><span class="badge">145</span>Porta ac consectetur ac</li>
+                    <li class="list-group-item"><span class="badge">123</span>Vestibulum at eros</li>
+                </ul>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">关注我</h3>
+                </div>
+                <div class="panel-body">
+
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <!--右侧文章列表-->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h2 class="text-center">{$info.title}</h2>
+                    <p class="text-center">作者：{$info.tid} &nbsp;&nbsp; {$info.create_time|date='Y-m-d',###} &nbsp;&nbsp; 点击：{$info.click} &nbsp;&nbsp; 评论：{$info.reply_count}</p>
+                    <div style="padding:20px;">
+                        {$info.content}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

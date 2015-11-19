@@ -20,6 +20,17 @@ return array(
     //用户登录密码加密KEY
     'AUTH_KEY' => '4HT)D7fW1$?`JOR}^EA#b[@3BL.h~!z9<nK5&0w_',
 
+    //设置分页每页数据条数
+    'PAGE'=> 12,
+
+    //模板相关配置
+    'TMPL_PARSE_STRING' => array(
+        '__UP__' => __ROOT__ . '/Uploads',
+        '__IMG__'    => __ROOT__ . '/Static/img',
+        '__CSS__'    => __ROOT__ . '/Static/css',
+        '__JS__'     => __ROOT__ . '/Static/js',
+    ),
+
     //数据库配置
     'DB_TYPE'   => 'mysqli', // 数据库类型
     'DB_HOST'   => 'localhost', // 服务器地址
